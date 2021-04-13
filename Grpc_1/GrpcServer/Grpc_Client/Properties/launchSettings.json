@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Grpc_Client": {
+      "commandName": "Project"
+    }
+  }
+}

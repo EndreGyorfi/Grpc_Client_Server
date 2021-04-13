@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+package chatPackage;
+
+// The greeting service definition.
+
+
+message PublicMessage{
+	string user = 1;
+	string text = 2;
+}
+
+message PrivateMessage{
+	string user = 1;
+	string toUser = 2;
+	string text = 3;
+}
+
+message GroupMessage{
+	string fromUser = 1;
+	string toGroup = 2;
+	string text = 3;
+}
+
+service ChatRoom {
+  rpc sendToGroup (stream GroupMessage ) returns (stream GroupMessage);
+  rpc sendPublic (stream PublicMessage) returns (stream PublicMessage);
+  rpc sendPrivate( stream PrivateMessage) returns (stream PrivateMessage);
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+  string protokoll = 2;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
